@@ -4,7 +4,7 @@ import { Card, CardBody} from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types'; // ES6
 
-const LoginComponent = ({username, password, setUsername, setPassword, logValues}) => {
+const LoginComponent = ({username, password, setUsername, setPassword, validateData}) => {
 
     const setUsernameWrapper = (evt) => {
         console.log(evt.target.value)
@@ -30,7 +30,7 @@ const LoginComponent = ({username, password, setUsername, setPassword, logValues
                             <Label for="examplePassword">Password</Label>
                             <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" value={password} onChange={setPasswordWrapper}/>
                             </FormGroup>
-                            <Button onClick={logValues}>Submit</Button>
+                            <Button onClick={validateData}>Submit</Button>
                         </Form>
                     </CardBody>
                 </Card>
