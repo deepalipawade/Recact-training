@@ -1,3 +1,12 @@
+Refrerred for sessios 3 - create login component
+
+https://getbootstrap.com/docs/4.0/utilities/borders/
+
+
+https://reactstrap.github.io/components/layout/#app
+
+reeume 36:18
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

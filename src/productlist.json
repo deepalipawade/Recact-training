@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "product_title": "t-shirt",
+        "quantity": 5,
+        "category": "clothing",
+        "product_price": 500,
+        "description": "clothes",
+        "discount": 30,
+        "tax": 5
+    },
+    {
+        "id": 2,
+        "product_title": "saree",
+        "quantity": 0,
+        "category": "clothing",
+        "product_price": 500,
+        "description": "clothes",
+        "discount": 30,
+        "tax": 5
+    },
+    {
+        "id": 3,
+        "product_title": "t-shirt",
+        "quantity": 5,
+        "category": "clothing",
+        "product_price": 500,
+        "description": "clothes",
+        "discount": 30,
+        "tax": 5
+    },
+    {
+        "id": 4,
+        "product_title": "t-shirt",
+        "quantity": 5,
+        "category": "clothing",
+        "product_price": 500,
+        "description": "clothes",
+        "discount": 30,
+        "tax": 5
+    }
+]
