@@ -5,6 +5,8 @@ https://getbootstrap.com/docs/4.0/utilities/borders/
 
 https://reactstrap.github.io/components/layout/#app
 
+https://www.npmjs.com/package/yup#install
+
 reeume 36:18
 
 # Getting Started with Create React App
