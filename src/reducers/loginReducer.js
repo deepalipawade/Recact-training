@@ -1,6 +1,12 @@
 import * as yup from 'yup'; // for everything
 
-export const initialState = { username:'', password:'', usernameError:null, passwordError:null};
+export const initialState = { 
+    username:'', 
+    password:'', 
+    usernameError: null, 
+    passwordError: null,
+    userDetails: {}
+};
 
 export let schema = yup.object().shape({
     username: yup.string().email().required(),
@@ -17,6 +23,8 @@ const loginReducer = (state, action) => {
             return {...state, usernameError: action.usernameError};
         case 'setPasswordError':
             return {...state, passwordError: action.passwordError};
+        case 'SET_USER_DETAILS':
+            return {...state, userDetails: action.userDetails};
     }
 }  
 
