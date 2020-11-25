@@ -7,6 +7,14 @@ https://reactstrap.github.io/components/layout/#app
 
 https://www.npmjs.com/package/yup#install
 
+
+api link https://taigaio.github.io/taiga-doc/dist/api.html#auth-normal-login
+
+https://taigaio.github.io/taiga-doc/dist/api.html#_authentication
+
+npm install --save react-router-dom
+https://reactrouter.com/
+
 reeume 36:18
 
 # Getting Started with Create React App

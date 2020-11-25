@@ -4,11 +4,21 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import ProductList from './components/productList';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <Switch>
+        <Route path='/login' exact>
+          <App />
+        </Route>
+        <Route path='/products'>
+          <ProductList />
+        </Route>
+      </Switch>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );

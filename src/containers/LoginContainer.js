@@ -1,38 +1,45 @@
-import React, { useState } from "react";
+import React, { useReducer } from "react";
 import LoginComponent from "../components/LoginComponent"
-import * as yup from 'yup'; // for everything
+import apiHelper from "../apis/apiHelper";
+import { API_HOST_URL } from '../shared/appConstant'
+import loginReducer, { initialState , schema} from '../reducers/loginReducer'
 
 //useState hook that return a variable and method to modify veriable
 const LoginContainer = () => {
-    const [ username , setUsername ] = useState("")
-    const [ password , setPassword ] = useState("")
-    const [ usernameError, setUsernameError ] = useState(null)
-    const [ passwordError, setPasswordError ] = useState(null)
-
-    // const logValues = () => {
-    //     console.log("Logvalues => Username : ", username, ", Password : ", password)
-    // }
-
-    let schema = yup.object().shape({
-        username: yup.string().email().required(),
-        password: yup.string().min(6).required(),
-    });
+    const [ state, dispatch ] = useReducer(loginReducer, initialState);
 
     const validateData = () => {
-        schema.validate({ username, password}, {abortEarly: false}).catch((err) => {
+        schema.validate({ username: state.username, password: state.password}, {abortEarly: false})
+        .then(() => {
+            apiHelper('post', API_HOST_URL, {
+                username: state.username, 
+                password: state.password, 
+                type: 'normal'})
+            .then((response) => {
+                //success change state isLoggedIn as true
+                console.log(response);
+                console.log("apiapiapiaurl", API_HOST_URL);
+            })
+        })
+        .catch((err) => {
             err.inner.forEach((ele) => {
-                if (ele.path === 'username') setUsernameError(ele.message)
-                if (ele.path === 'password') setPasswordError(ele.message)
+                if (ele.path === 'username') {
+                    dispatch({type: 'setUsernameError', usernameError: ele.message})
+                } 
+                if (ele.path === 'password') {
+                    dispatch({type: 'setPasswordError', passwordError: ele.message})
+                }
                 console.log(err.errors);
                 console.log(err.name); 
             });
         });          
     } 
-
+// if (isLoggedIn){
+//     redirect
+//     <LoginComponent/>
+// }
     return(
-        <LoginComponent 
-        username={username} password={password} setUsername={setUsername} setPassword={setPassword} validateData={validateData} usernameError={usernameError} passwordError={passwordError}
-        />
+        <LoginComponent state={state} dispatch={dispatch} validateData={validateData}/>
     )
 }   
 

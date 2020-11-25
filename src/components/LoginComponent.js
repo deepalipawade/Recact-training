@@ -3,16 +3,18 @@ import { Button, Form, FormGroup, Label, Input, FormFeedback} from 'reactstrap';
 import { Card, CardBody} from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types'; // ES6
+import { API_HOST_URL } from '../shared/appConstant'
 
-const LoginComponent = ({username, password, setUsername, setPassword, validateData, usernameError, passwordError}) => {
+const LoginComponent = ({state, dispatch,validateData}) => {
 
     const setUsernameWrapper = (evt) => {
-        console.log(evt.target.value)
-        setUsername(evt.target.value)
+        console.log("API_HOST_URL",API_HOST_URL)
+        dispatch({type: 'setUsername', username: evt.target.value})
+        console.log("username : ", state.username, evt.target.value)       
     }
     const setPasswordWrapper = (evt) => {
-        console.log(evt.target.value)
-        setPassword(evt.target.value)
+        dispatch({type: 'setPassword', password: evt.target.value})
+        console.log("password : ", state.password, evt.target.value)
     }
 
     return ( 
@@ -25,16 +27,16 @@ const LoginComponent = ({username, password, setUsername, setPassword, validateD
                             <FormGroup>
                             <Label for="exampleEmail">Email</Label>
                             <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" 
-                                value={username} onChange={setUsernameWrapper} 
-                                invalid = {(usernameError != null)} /*invalid is same as invalid={true}*/ />
-                            <FormFeedback>{usernameError}</FormFeedback>
+                                value={state.username} onChange={setUsernameWrapper} 
+                                invalid = {(state.usernameError != null)} /*invalid is same as invalid={true}*/  />
+                            <FormFeedback>{state.usernameError}</FormFeedback>
                             </FormGroup>    
                             <FormGroup>
                             <Label for="examplePassword">Password</Label>
                             <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" 
-                                value={password} onChange={setPasswordWrapper} 
-                                invalid = {(passwordError !== null)} />
-                            <FormFeedback>{passwordError}</FormFeedback>
+                                value={state.password} onChange={setPasswordWrapper} 
+                                invalid = {(state.passwordError !== null)} />
+                            <FormFeedback>{state.passwordError}</FormFeedback>
                             </FormGroup>
                             <Button onClick={validateData}>Submit</Button>
                         </Form>
@@ -48,9 +50,9 @@ const LoginComponent = ({username, password, setUsername, setPassword, validateD
 
 export default LoginComponent;
 
-LoginComponent.propTypes = {
-    username: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired,
-    setUsername: PropTypes.func.isRequired,
-    setPassword: PropTypes.func.isRequired,
-}
+// LoginComponent.propTypes = {
+//     username: PropTypes.string.isRequired,
+//     password: PropTypes.string.isRequired,
+//     setUsername: PropTypes.func.isRequired,
+//     setPassword: PropTypes.func.isRequired,
+// }
